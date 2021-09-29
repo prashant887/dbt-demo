@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: sales_data
+    description: "Snowflake Source Data"
+    database: DEMO_DB
+    schema: PUBLIC
+    tables:
+      - name: orders
+        description: 'all the orders placed'
+      - name: customers
+      - name: order_items
+      - name: products
+      - name: categories
+      - name: departments
