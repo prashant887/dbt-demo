@@ -14,3 +14,10 @@ This is dbt (Data Build Tool) ETL tool
 
  Tests --> Tests are defined in schema.yaml under models/tables
  dbt test
+
+ Packages--> Standalone DBT project , add project.yaml,dbt-hub   dbt deps to install packages , dbt_modules
+
+ dbt docs -> turning models to website , dbt docs generate  , dbt docs server
+
+ dbt docs generate --no-version-check
+ /dbt-demo/dbt-demo/target/catalog.json

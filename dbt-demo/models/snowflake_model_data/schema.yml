@@ -9,10 +9,15 @@ sources:
       - name: orders
         description: 'all the orders placed'
       - name: customers
+        description: 'all the customers'
       - name: order_items
+        description: 'items related to orders'
       - name: products
+        description: 'product cataloge'
       - name: categories
+        description: 'product catagories'
       - name: departments
+        description: 'customer departments'
 
 models:
   - name: cust_count_by_state
