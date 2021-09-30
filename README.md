@@ -11,3 +11,6 @@ This is dbt (Data Build Tool) ETL tool
 
  in dbt_project.yaml under models define schema where changes needs to be applied 
  schema infered is DEFAULT Schema(Public)+mentioned_schema(SALES_SCHEMA) so new schema PUBLIC_SALES_SCHEMA is created , to get over this modify a macro generate_schema_name , delete {{ custom_schema }}
+
+ Tests --> Tests are defined in schema.yaml under models/tables
+ dbt test
