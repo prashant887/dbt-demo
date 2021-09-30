@@ -1,3 +1,6 @@
+{{ config(materialized='table') }}
+
+
 with store_sales as (
     select * from {{ source('sales_data', 'customers') }}
 ),
