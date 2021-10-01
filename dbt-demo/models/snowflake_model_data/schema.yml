@@ -19,6 +19,14 @@ sources:
       - name: departments
         description: 'customer departments'
 
+  - name: sales_schema
+    description: "Customer Source Data"
+    database: DEMO_DB
+    schema: SALES_SCHEMA
+    tables:
+      - name: customer
+        description: 'all Customers details'
+
 models:
   - name: cust_count_by_state
     description: "A Aggregated Table"
@@ -33,6 +41,17 @@ models:
       #- name: CUST_COUNT
 
   - name: customer
+    tests:
+      - is_not_empty
+
+  - name: orders_count_by_cust
+    tests:
+      - is_not_empty
+    columns:
+      - name: CUST_NAME
+      - name: ORD_COUNT
+
+  - name: cust_details_ord_counts
     tests:
       - is_not_empty
 
