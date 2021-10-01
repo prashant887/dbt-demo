@@ -21,3 +21,15 @@ This is dbt (Data Build Tool) ETL tool
 
  dbt docs generate --no-version-check
  /dbt-demo/dbt-demo/target/catalog.json
+
+ Seeds -> external csv files for static data,reference file
+ by defalt looks at data-path from dbt_projects.yml
+ dbt seed ( --no-version-check) --> to load the seed file to project,creates a table in default schema
+ to specify schema and seed property ,seed block to be created in dbt_project.yml
+
+ dbt run --models modle name
+ 
+### Custom Tests 
+Tests are macros to define test need  to create macro test_<test_name>
+
+dbt test -m example --no-version-check --store-failures --> store results
