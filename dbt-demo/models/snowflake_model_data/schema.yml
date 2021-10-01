@@ -22,10 +22,17 @@ sources:
 models:
   - name: cust_count_by_state
     description: "A Aggregated Table"
+    tests:
+      - is_not_empty
     columns:
       - name: CUSTOMER_STATE
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
-      - name: CUST_COUNT
+      #- name: CUST_COUNT
+
+  - name: customer
+    tests:
+      - is_not_empty
+

@@ -40,4 +40,8 @@ models:
     snowflake_model_data:
       +materialized: table
       +schema: SALES_SCHEMA
+
+seeds:
+  dbt_demo_project:
+    +schema: SALES_SCHEMA
     
