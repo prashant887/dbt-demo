@@ -1,0 +1,22 @@
+
+version: 2
+
+sources:
+  - name: freshness_test
+    database: postgres  
+    schema: public
+
+    freshness: # default freshness
+      warn_after: {count: 1, period: hour}
+      error_after: {count: 2, period: hour}
+
+    loaded_at_field: created_ts
+
+    tables:
+      - name: customers_freshness # this will use the freshness defined above
+      - name: orders_freshness
+        freshness: # make this a little more strict
+          warn_after: {count: 6, period: hour}
+          error_after: {count: 12, period: hour}
+          # Apply a where clause in the freshness query
+          filter: EXTRACT(minute from (current_timestamp- created_ts) ) < 5

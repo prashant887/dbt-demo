@@ -49,4 +49,7 @@ dbt docs generate --no-version-check
 create doc dir in model
 
 ### Freshness
-code added to block or tbl
+code added to block or tbl,check for freshness
+create dir source under models 
+dbt source snapshot-freshness
+filter is used to look for records matching filter
