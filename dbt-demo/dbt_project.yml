@@ -26,7 +26,10 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_modules"
 
-
+#on-run-start: "insert into dbtdemo.dbt_audit_table (action) values('BUILD_STARTED');commit;"
+#on-run-end: "insert into dbtdemo.dbt_audit_table (action) values('BUILD_ENDED'); commit;"
+on-run-start: "{{ audits('BUILD_STARTED') }}"
+on-run-end: "{{ audits('BUILD_ENDED') }}"
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -34,6 +37,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
+  #pre-hook: "insert into dbtdemo.dbt_audit_table (action) values('MODEL_STARTED');commit;"
+  #post-hook: "insert into dbtdemo.dbt_audit_table (action) values('MODEL_ENDED'); commit;"
+  pre-hook: "{{ audits('MODEL_STARTED') }}"
+  post-hook: "{{ audits('MODEL_ENDED') }}"
   dbt_demo_project:
     # Config indicated by + and applies to all files under models/example/
     example:

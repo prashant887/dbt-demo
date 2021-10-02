@@ -33,3 +33,13 @@ This is dbt (Data Build Tool) ETL tool
 Tests are macros to define test need  to create macro test_<test_name>
 
 dbt test -m example --no-version-check --store-failures --> store results
+
+### Constant Variables 
+in project.yaml add vars , while dbt run --vars key:val
+
+### Hooks
+configs in dbt_porject.yml
+hooks are used for auid purpose , on-start , on-end  
+under models pre hook , post hook
+macros:
+
