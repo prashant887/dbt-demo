@@ -1,8 +1,8 @@
 {{ config(materialized='view') }}
 with cust as (
-    select * from {{ source('sales_schema', 'customer') }}
+    select * from {{ source('dims_data', 'customers') }}
 ),ord as (
-    select * from {{ source('sales_data', 'orders') }}
+    select * from {{ source('facts_data', 'orders') }}
 )
 
 

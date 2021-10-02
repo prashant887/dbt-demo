@@ -8,7 +8,8 @@ config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
 #profile: 'default'
-profile: 'my-snowflake-db'
+#profile: 'my-snowflake-db'
+profile: postgres-db
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -37,11 +38,20 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+      +schema: dbtdemo
     snowflake_model_data:
       +materialized: table
-      +schema: SALES_SCHEMA
+      +schema: dbtdemo
+    postgres_model:
+      +materialized: table
+      +schema: dbtdemo
 
 seeds:
   dbt_demo_project:
-    +schema: SALES_SCHEMA
-    
+    +schema: dbtdemo
+  
+vars:
+  country: "NA"
+  dbt_demo_project:
+    country: "USA"
+  
