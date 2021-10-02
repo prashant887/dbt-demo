@@ -56,4 +56,6 @@ models:
       - name: cntry
         tests:
           - is_usa
+      - name: cust_name
+        description: '{{ doc("ord_cust_name")}}'
 

@@ -43,3 +43,10 @@ hooks are used for auid purpose , on-start , on-end
 under models pre hook , post hook
 macros:
 
+### Docs
+Create md file in model folder and use jinja templates
+dbt docs generate --no-version-check 
+create doc dir in model
+
+### Freshness
+code added to block or tbl
