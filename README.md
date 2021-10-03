@@ -53,3 +53,17 @@ code added to block or tbl,check for freshness
 create dir source under models 
 dbt source snapshot-freshness
 filter is used to look for records matching filter
+
+### State Method
+dbt compile , create manist file in target dir
+
+dbt ls -model state:modified --state <patb_to_other_amifast>
+
+## Packages
+--> to be done 
+
+## Invocation ID 
+its unique Unique Ids , uqiue for all models per run 
+
+## Compile
+dbt compile  --no-version-check 
