@@ -27,7 +27,7 @@ This is dbt (Data Build Tool) ETL tool
  dbt seed ( --no-version-check) --> to load the seed file to project,creates a table in default schema
  to specify schema and seed property ,seed block to be created in dbt_project.yml
 
- dbt run --models modle name
+ dbt run --models modle name --no-version-check
  
 ### Custom Tests 
 Tests are macros to define test need  to create macro test_<test_name>
@@ -67,3 +67,6 @@ its unique Unique Ids , uqiue for all models per run
 
 ## Compile
 dbt compile  --no-version-check 
+
+## Incremental Run
+dbt run --models postgres_model --full-refresh --no-version-check

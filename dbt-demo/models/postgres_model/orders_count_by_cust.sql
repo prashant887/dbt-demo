@@ -1,4 +1,10 @@
-{{ config(materialized='view') }}
+{{ 
+    
+    config(materialized='view',
+    pre_hook=audits('POSTGRES_MODEL','STARTED','ORDERS_COUNT_BY_CUST'),
+    post_hook=audits('POSTGRES_MODEL','ENDED','ORDERS_COUNT_BY_CUST')    
+    ) 
+    }}
 with cust as (
     select * from {{ source('dims_data', 'customers') }}
 ),ord as (

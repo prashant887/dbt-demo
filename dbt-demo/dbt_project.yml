@@ -28,8 +28,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 #on-run-start: "insert into dbtdemo.dbt_audit_table (action) values('BUILD_STARTED');commit;"
 #on-run-end: "insert into dbtdemo.dbt_audit_table (action) values('BUILD_ENDED'); commit;"
-on-run-start: "{{ audits('BUILD_STARTED') }}"
-on-run-end: "{{ audits('BUILD_ENDED') }}"
+on-run-start: "{{ audits('MAIN','START',NULL) }}"
+on-run-end: "{{ audits('MAIN','END',NULL) }}"
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -39,8 +39,8 @@ on-run-end: "{{ audits('BUILD_ENDED') }}"
 models:
   #pre-hook: "insert into dbtdemo.dbt_audit_table (action) values('MODEL_STARTED');commit;"
   #post-hook: "insert into dbtdemo.dbt_audit_table (action) values('MODEL_ENDED'); commit;"
-  pre-hook: "{{ audits('MODEL_STARTED') }}"
-  post-hook: "{{ audits('MODEL_ENDED') }}"
+  #pre-hook: "{{ audits('MODEL_STARTED') }}"
+  #post-hook: "{{ audits('MODEL_ENDED') }}"
   dbt_demo_project:
     # Config indicated by + and applies to all files under models/example/
     example:
@@ -52,6 +52,8 @@ models:
     postgres_model:
       +materialized: table
       +schema: dbtdemo
+      #pre-hook: "{{ audits('POSTGRES_MODEL','STARTED') }}"
+      #post-hook: "{{ audits('POSTGRES_MODEL','ENDED') }}"
 
 seeds:
   dbt_demo_project:
