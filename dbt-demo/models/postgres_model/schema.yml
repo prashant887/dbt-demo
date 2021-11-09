@@ -1,0 +1,61 @@
+version: 2
+
+sources:
+  - name: facts_data
+    description: "Facts Data"
+    database: postgres
+    schema: facts
+    tables:
+      - name: orders
+        description: 'all the orders placed'
+      - name: order_items
+        description: 'items related to orders'
+      
+
+  - name: dims_data
+    description: "Dimension  Data"
+    database: postgres
+    schema: dims
+    tables:
+      - name: customers
+        description: 'all Customers details'
+      - name: products
+        description: 'product cataloge'
+      - name: categories
+        description: 'product catagories'
+      - name: departments
+        description: 'customer departments'
+
+models:
+  - name: cust_count_by_state
+    description: "A Aggregated Table"
+    tests:
+      - is_not_empty
+    columns:
+      - name: CUSTOMER_STATE
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      #- name: CUST_COUNT
+
+  
+  - name: orders_count_by_cust
+    tests:
+      - is_not_empty
+    columns:
+      - name: CUST_NAME
+      - name: ORD_COUNT
+
+  
+
+  - name: cust_details_ord_counts
+    tests:
+      - is_not_empty
+    columns:
+      - name: cntry
+        tests:
+          - is_usa
+      - name: cust_name
+        description: '{{ doc("ord_cust_name")}}'
+
