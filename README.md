@@ -70,3 +70,8 @@ dbt compile  --no-version-check
 
 ## Incremental Run
 dbt run --models postgres_model --full-refresh --no-version-check
+
+## generate custom schema name 
+override macro generate_schema_name.sql to define target schema , default schema is defined in ~/.dbt/profiles.yml  , to define target schema name for dir under model define in it dbt_projects.yml 
+You can use custom schemas in dbt to build models in a schema other than your target schema. It's important to note that by default, dbt will generate the schema name for a model by concatenating the custom schema to the target schema, as in: <target_schema>_<custom_schema>;.
+
