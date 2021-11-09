@@ -75,3 +75,18 @@ dbt run --models postgres_model --full-refresh --no-version-check
 override macro generate_schema_name.sql to define target schema , default schema is defined in ~/.dbt/profiles.yml  , to define target schema name for dir under model define in it dbt_projects.yml 
 You can use custom schemas in dbt to build models in a schema other than your target schema. It's important to note that by default, dbt will generate the schema name for a model by concatenating the custom schema to the target schema, as in: <target_schema>_<custom_schema>;.
 
+## vars 
+These are declared in dbt_projects , used as a constant variables 
+
+dbt run --models postgres_model --no-version-check --vars '{"country":"IND"}'
+
+## Aliases 
+To have object name different from file name , but for ref{{}} use filename
+
+## Tests
+# Generic Test 
+Generic tests to check table is empty , null checks
+create macro in macro directory  
+# Data Test 
+Specific to certaian model,table like sum of order amounts 
+create .sql in tests dir 
