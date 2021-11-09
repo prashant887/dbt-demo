@@ -1,0 +1,10 @@
+
+    
+    create table "postgres"."dbtdemo"."locations" (city text,state text,country text,pincode integer)
+  ;
+    -- dbt seed --
+    
+            insert into "postgres"."dbtdemo"."locations" (city, state, country, pincode) values
+            (%s,%s,%s,%s),(%s,%s,%s,%s),(%s,%s,%s,%s),(%s,%s,%s,%s),(%s,%s,%s,%s)
+        
+  
