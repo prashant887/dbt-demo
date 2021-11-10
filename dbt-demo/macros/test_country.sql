@@ -2,6 +2,6 @@
 
 
 
-select * from {{ model }} where {{ column_name }} != 'USA'
+select * from {{ model }} where {{ column_name }} != '{{ var("country") }}'
 
 {% endtest %}

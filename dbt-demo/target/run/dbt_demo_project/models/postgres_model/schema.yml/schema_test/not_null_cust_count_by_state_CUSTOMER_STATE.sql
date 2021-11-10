@@ -4,14 +4,8 @@ select
       count(*) != 0 as should_error
     from (
       
+        select *
+        from "postgres"."dbt_test__audit"."not_null_cust_count_by_state_CUSTOMER_STATE"
     
-    
-
-select *
-from "postgres"."dbtdemo"."cust_count_by_state"
-where CUSTOMER_STATE is null
-
-
-
       
     ) dbt_internal_test

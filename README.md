@@ -90,3 +90,9 @@ create macro in macro directory
 # Data Test 
 Specific to certaian model,table like sum of order amounts 
 create .sql in tests dir 
+
+dbt test --models postgres_model --no-version-check --store-failures
+
+## Freshness 
+
+dbt source freshness

@@ -59,3 +59,17 @@ models:
       - name: cust_name
         description: '{{ doc("ord_cust_name")}}'
 
+  - name: orders_order_items_vw
+    tests:
+      - is_not_empty
+    columns:
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ["COMPLETE","ON_HOLD","PENDING_PAYMENT","PENDING","CLOSED","CANCELED","PROCESSING","PAYMENT_REVIEW","SUSPECTED_FRAUD"]
+      - name: order_id
+        tests:
+          - relationships:
+              to: facts.orders
+              field: order_id
+

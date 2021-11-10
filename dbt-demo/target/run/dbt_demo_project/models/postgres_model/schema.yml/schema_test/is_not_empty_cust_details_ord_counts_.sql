@@ -4,17 +4,8 @@ select
       count(*) != 0 as should_error
     from (
       
-
-with validation(rw) as (
-
-    select case when count(*)=0 then 1 else 0 end
-    from "postgres"."dbtdemo"."cust_details_ord_counts"
-
-)
-
-select *
-from validation where rw=1
-
-
+        select *
+        from "postgres"."dbt_test__audit"."is_not_empty_cust_details_ord_counts_"
+    
       
     ) dbt_internal_test

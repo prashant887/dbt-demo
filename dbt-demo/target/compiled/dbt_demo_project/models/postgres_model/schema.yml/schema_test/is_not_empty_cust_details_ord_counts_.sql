@@ -10,3 +10,4 @@ with validation(rw) as (
 select *
 from validation where rw=1
 
+
