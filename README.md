@@ -94,5 +94,21 @@ create .sql in tests dir
 dbt test --models postgres_model --no-version-check --store-failures
 
 ## Freshness 
-
+define freshness in schema under tables , filed to be referred for freshness check
 dbt source freshness
+
+## Seed
+dbt seed , keep csv file in data directory and run dbt seed 
+name of csv will be name of object and refered with csv filename 
+dbt seed --full-refresh
+test seed create yml in data dir 
+
+## Snapshots
+These are used to achive SCD Type-2
+dbt snapshot
+objects are created by macro-name
+There are 2 stargies 
+1. Update by timestamp
+2. Update by value changes / check startirgies 
+
+dbt snapshot --select orders_snapshot_timestamp

@@ -1,0 +1,102 @@
+version: 2
+
+sources:
+  - name: facts_data
+    description: "Facts Data"
+    database: postgres
+    schema: facts
+    tables:
+      - name: orders
+        description: 'all the orders placed'
+      - name: order_items
+        description: 'items related to orders'
+      
+
+  - name: dims_data
+    description: "Dimension  Data"
+    database: postgres
+    schema: dims
+    tables:
+      - name: customers
+        description: 'all Customers details'
+      - name: products
+        description: 'product cataloge'
+      - name: categories
+        description: 'product catagories'
+      - name: departments
+        description: 'customer departments'
+
+  - name: dbt_data
+    description: "Trasformed  Data"
+    database: postgres
+    schema: dbtdemo
+    freshness:
+      warn_after: {count: 1, period: hour}
+      error_after: {count: 2, period: hour}
+    loaded_at_field: created_ts
+    tables:
+      - name: even_events
+        description: 'all Even Events'
+      - name: odd_events
+        description: 'all Odd Events'
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 2, period: hour}
+        loaded_at_field: created_datetime
+
+  - name: public_data
+    description: "Facts Data"
+    database: postgres
+    schema: public
+    tables:
+      - name: order_status
+        description: 'all the orders placed'
+
+  
+models:
+  - name: cust_count_by_state
+    description: "A Aggregated Table"
+    tests:
+      - is_not_empty
+    columns:
+      - name: CUSTOMER_STATE
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      #- name: CUST_COUNT
+
+  
+  - name: orders_count_by_cust
+    tests:
+      - is_not_empty
+    columns:
+      - name: CUST_NAME
+      - name: ORD_COUNT
+
+  
+
+  - name: cust_details_ord_counts
+    tests:
+      - is_not_empty
+    columns:
+      - name: cntry
+        tests:
+          - is_usa
+      - name: cust_name
+        description: '{{ doc("ord_cust_name")}}'
+
+  - name: orders_order_items_vw
+    tests:
+      - is_not_empty
+    columns:
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ["COMPLETE","ON_HOLD","PENDING_PAYMENT","PENDING","CLOSED","CANCELED","PROCESSING","PAYMENT_REVIEW","SUSPECTED_FRAUD"]
+      - name: order_id
+        tests:
+          - relationships:
+              to: facts.orders
+              field: order_id
+

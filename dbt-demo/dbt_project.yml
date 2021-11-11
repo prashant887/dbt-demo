@@ -63,4 +63,4 @@ vars:
   country: "NA"
   dbt_demo_project:
     country: "USA"
-  
+

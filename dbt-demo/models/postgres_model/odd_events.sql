@@ -5,5 +5,5 @@ pre_hook=audits('POSTGRES_MODEL','STARTED','ODD_EVENTS'),
         )
 
 }}
-select * from events a where not exists 
+select a.*,current_timestamp created_datetime from events a where not exists 
 (select 1 from {{ ref('model_alias') }} b where a.id=b.id)

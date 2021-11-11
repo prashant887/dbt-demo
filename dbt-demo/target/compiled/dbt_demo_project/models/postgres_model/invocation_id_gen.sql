@@ -1,1 +1,1 @@
-select 'b96500ff-5f34-487f-a45c-e36bc033b08b' as invocation_id
+select '7dafd3d9-a130-42c8-8673-3ba1cc417592' as invocation_id
