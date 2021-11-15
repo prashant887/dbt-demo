@@ -93,6 +93,8 @@ create .sql in tests dir
 
 dbt test --models postgres_model --no-version-check --store-failures
 
+dbt_test_audit schema will be created and table for each test
+
 ## Freshness 
 define freshness in schema under tables , filed to be referred for freshness check
 dbt source freshness
@@ -112,3 +114,7 @@ There are 2 stargies
 2. Update by value changes / check startirgies 
 
 dbt snapshot --select orders_snapshot_timestamp
+
+## Emphiricals 
+These are used to define logic and will not create models , and using the sql's defined other models can be built
+dbt run does not treat this as a model

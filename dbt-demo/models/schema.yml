@@ -52,6 +52,16 @@ sources:
       - name: order_status
         description: 'all the orders placed'
 
+  - name: yara_data
+    description: "yara assignment data"
+    database: postgres
+    schema: yara
+    tables:
+      - name: user_location
+        description: 'User Location Info'
+      - name: world_cities
+        description: 'World Cities'
+
   
 models:
   - name: cust_count_by_state
